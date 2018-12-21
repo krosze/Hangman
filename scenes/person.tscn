@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://head.gd" type="Script" id=1]
+
+[node name="hangman" type="Node2D"]
+
+position = Vector2( 94.6377, 536.622 )
+scale = Vector2( 3.5, 3.5 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="person" type="Node2D" parent="." index="0"]
+
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="torso" type="Line2D" parent="person" index="0"]
+
+points = PoolVector2Array( 45.7694, -63.8564, 45.7694, -29.81 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 72
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="left_arm" type="Line2D" parent="person" index="1"]
+
+points = PoolVector2Array( 45.7653, -58.7338, 60.4712, -49.1545 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 72
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="right_leg" type="Line2D" parent="person" index="2"]
+
+points = PoolVector2Array( 45.7653, -30.024, 32.3119, -14.9062 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 72
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="left_leg" type="Line2D" parent="person" index="3"]
+
+points = PoolVector2Array( 45.6266, -30.1627, 58.6639, -15.3223 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 72
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="right_arm" type="Line2D" parent="person" index="4"]
+
+points = PoolVector2Array( 45.3825, -58.4399, 29.9069, -48.7676 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 72
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="head" type="Node2D" parent="person" index="5"]
+
+position = Vector2( 45.7783, -72.4277 )
+scale = Vector2( 0.340955, 0.344121 )
+script = ExtResource( 1 )
+
+[node name="head_pos" type="Position2D" parent="person/head" index="0"]
+
+position = Vector2( 0.5, -3.13994 )
+scale = Vector2( 2.93294, 2.90596 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="pole" type="Line2D" parent="." index="1"]
+
+scale = Vector2( 2, 2 )
+points = PoolVector2Array( -0.0647812, 0.688751, -0.0104828, -49.5685, 28.196, -49.5784 )
+width = 3.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = 72
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="rope" type="Line2D" parent="pole" index="0"]
+
+scale = Vector2( 0.5, 0.5 )
+points = PoolVector2Array( 45.8582, -96.996, 45.8582, -83.7311 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = 1209988752
+sharp_limit = 2.0
+round_precision = 8
+
+

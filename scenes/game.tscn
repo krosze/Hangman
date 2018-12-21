@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/word.gd" type="Script" id=2]
+[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/person.tscn" type="PackedScene" id=4]
+
+[node name="interactive" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Pause", "Visibility" ]
+
+[node name="word" type="Node2D" parent="." index="0"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+input = "sweet"
+
+[node name="start" type="Position2D" parent="word" index="0"]
+
+position = Vector2( 81.2945, 117.373 )
+
+[node name="alphabet" parent="." index="1" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+margin_left = 376.0
+margin_top = 316.0
+margin_right = 736.0
+margin_bottom = 366.0
+
+[node name="Button" parent="alphabet/VBoxContainer3" index="0"]
+
+editor/display_folded = true
+
+[node name="hangman" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="torso" parent="hangman/person" index="0"]
+
+visible = false
+_sections_unfolded = [ "Visibility" ]
+
+[node name="left_arm" parent="hangman/person" index="1"]
+
+visible = false
+_sections_unfolded = [ "Visibility" ]
+
+[node name="right_leg" parent="hangman/person" index="2"]
+
+visible = false
+
+[node name="left_leg" parent="hangman/person" index="3"]
+
+visible = false
+
+[node name="right_arm" parent="hangman/person" index="4"]
+
+visible = false
+
+[node name="head" parent="hangman/person" index="5"]
+
+visible = false
+_sections_unfolded = [ "Visibility" ]
+
+[node name="head_pos" parent="hangman/person/head" index="0"]
+
+visible = false
+
+[connection signal="reset" from="." to="word" method="_on_game_reset"]
+
+[connection signal="goodjob" from="word" to="." method="_on_word_goodjob"]
+
+[connection signal="notthere" from="word" to="." method="_on_word_notthere"]
+
+[connection signal="pressed" from="alphabet/VBoxContainer/Button" to="word" method="handle_string" binds= [ "a" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer/Button2" to="word" method="handle_string" binds= [ "n" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer2/Button" to="word" method="handle_string" binds= [ "b" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer2/Button2" to="word" method="handle_string" binds= [ "o" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer3/Button" to="word" method="handle_string" binds= [ "c" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer3/Button2" to="word" method="handle_string" binds= [ "p" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer4/Button" to="word" method="handle_string" binds= [ "d" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer4/Button2" to="word" method="handle_string" binds= [ "q" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer5/Button" to="word" method="handle_string" binds= [ "e" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer5/Button2" to="word" method="handle_string" binds= [ "r" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer6/Button" to="word" method="handle_string" binds= [ "f" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer6/Button2" to="word" method="handle_string" binds= [ "s" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer7/Button" to="word" method="handle_string" binds= [ "g" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer7/Button2" to="word" method="handle_string" binds= [ "t" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer8/Button" to="word" method="handle_string" binds= [ "h" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer8/Button2" to="word" method="handle_string" binds= [ "u" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer9/Button" to="word" method="handle_string" binds= [ "i" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer9/Button2" to="word" method="handle_string" binds= [ "v" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer10/Button" to="word" method="handle_string" binds= [ "j" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer10/Button2" to="word" method="handle_string" binds= [ "w" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer11/Button" to="word" method="handle_string" binds= [ "k" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer11/Button2" to="word" method="handle_string" binds= [ "x" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer12/Button" to="word" method="handle_string" binds= [ "l" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer12/Button2" to="word" method="handle_string" binds= [ "y" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer13/Button" to="word" method="handle_string" binds= [ "m" ]]
+
+[connection signal="pressed" from="alphabet/VBoxContainer13/Button2" to="word" method="handle_string" binds= [ "z" ]]
+
+
+[editable path="alphabet"]
+[editable path="hangman"]
