@@ -5,65 +5,85 @@
 [ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/person.tscn" type="PackedScene" id=4]
 
-[node name="interactive" type="Node2D" index="0"]
+[node name="interactive" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Pause", "Visibility" ]
 
 [node name="word" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 script = ExtResource( 2 )
-input = "sweet"
+input = "godot is"
 
 [node name="start" type="Position2D" parent="word" index="0"]
 
-position = Vector2( 81.2945, 117.373 )
+position = Vector2( 104.633, 112.391 )
 
 [node name="alphabet" parent="." index="1" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-margin_left = 376.0
-margin_top = 316.0
-margin_right = 736.0
-margin_bottom = 366.0
+margin_left = 314.0
+margin_top = 245.0
+margin_right = 726.0
+margin_bottom = 321.0
+
+[node name="VBoxContainer" parent="alphabet" index="0"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer2" parent="alphabet" index="1"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer3" parent="alphabet" index="2"]
+
+margin_bottom = 76.0
 
 [node name="Button" parent="alphabet/VBoxContainer3" index="0"]
 
 editor/display_folded = true
 
+[node name="VBoxContainer4" parent="alphabet" index="3"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer5" parent="alphabet" index="4"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer6" parent="alphabet" index="5"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer7" parent="alphabet" index="6"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer8" parent="alphabet" index="7"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer9" parent="alphabet" index="8"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer10" parent="alphabet" index="9"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer11" parent="alphabet" index="10"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer12" parent="alphabet" index="11"]
+
+margin_bottom = 76.0
+
+[node name="VBoxContainer13" parent="alphabet" index="12"]
+
+margin_bottom = 76.0
+
 [node name="hangman" parent="." index="2" instance=ExtResource( 4 )]
-
-[node name="torso" parent="hangman/person" index="0"]
-
-visible = false
-_sections_unfolded = [ "Visibility" ]
-
-[node name="left_arm" parent="hangman/person" index="1"]
-
-visible = false
-_sections_unfolded = [ "Visibility" ]
-
-[node name="right_leg" parent="hangman/person" index="2"]
-
-visible = false
-
-[node name="left_leg" parent="hangman/person" index="3"]
-
-visible = false
-
-[node name="right_arm" parent="hangman/person" index="4"]
-
-visible = false
-
-[node name="head" parent="hangman/person" index="5"]
-
-visible = false
-_sections_unfolded = [ "Visibility" ]
-
-[node name="head_pos" parent="hangman/person/head" index="0"]
-
-visible = false
 
 [connection signal="reset" from="." to="word" method="_on_game_reset"]
 
@@ -125,4 +145,3 @@ visible = false
 
 
 [editable path="alphabet"]
-[editable path="hangman"]

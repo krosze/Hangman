@@ -11,7 +11,7 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	start = true
-	$restart/play_button.hide()
+	$play_button.hide()
 	$game/word.hide()
 	_on_game_start()
 
@@ -30,7 +30,7 @@ func _on_interactive_game_over():
 
 func _on_game_start():
 	if start == true:
-		$restart/play_button.disabled = true
+		$play_button.disabled = true
 		$game/alphabet.hide()
 		$label.text = "hangman"
 		$start_timer.start()
@@ -46,11 +46,8 @@ func _on_start_timer_timeout():
 
 func _on_end_timer_timeout():
 	$label.percent_visible = 0
-	$restart/play_button.show()
-	$restart/play_button.disabled = false
-	$label.text = "play again?"
-	$anim.play("text_anim")
-
+	$play_button.disabled = false
+	$play_button.show()
 
 func _on_game_win():
 	$game/alphabet.hide()

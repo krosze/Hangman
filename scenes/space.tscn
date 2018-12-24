@@ -20,6 +20,7 @@ default_color = Color( 1, 1, 1, 1 )
 texture_mode = 1209988752
 sharp_limit = 2.0
 round_precision = 8
+_sections_unfolded = [ "Visibility" ]
 
 [node name="text" type="Label" parent="." index="1"]
 
@@ -40,6 +41,6 @@ custom_fonts/font = SubResource( 1 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
 
 
