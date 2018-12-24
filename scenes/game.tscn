@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/word.gd" type="Script" id=2]
-[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/person.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/click.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/person.tscn" type="PackedScene" id=5]
 
 [node name="interactive" type="Node2D"]
 
@@ -19,7 +20,16 @@ input = "godot is"
 
 position = Vector2( 104.633, 112.391 )
 
-[node name="alphabet" parent="." index="1" instance=ExtResource( 3 )]
+[node name="click" type="AudioStreamPlayer" parent="word" index="1"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="alphabet" parent="." index="1" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 margin_left = 314.0
@@ -83,7 +93,7 @@ margin_bottom = 76.0
 
 margin_bottom = 76.0
 
-[node name="hangman" parent="." index="2" instance=ExtResource( 4 )]
+[node name="hangman" parent="." index="2" instance=ExtResource( 5 )]
 
 [connection signal="reset" from="." to="word" method="_on_game_reset"]
 

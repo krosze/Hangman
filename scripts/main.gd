@@ -4,6 +4,7 @@ extends CanvasLayer
 # var a = 2
 # var b = "textvar"
 var start
+var play_sound
 
 signal start_over
 
@@ -11,6 +12,7 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	start = true
+	play_sound = true
 	$play_button.hide()
 	$game/word.hide()
 	_on_game_start()
@@ -58,5 +60,21 @@ func _on_game_win():
 
 func _on_play_button_down():
 	start = true
+	play_sound = true
 	emit_signal("start_over")
 	_ready()
+
+
+func _on_anim_animation_finished(anim_name):
+	if play_sound:
+		$start_sound.play()
+		play_sound = false
+
+
+func _on_word_mayoi():
+	$mayoi.visible = true
+	$mayoi/mayoi_timer.start()
+
+
+func _on_mayoi_timer_timeout():
+	$mayoi.visible = false

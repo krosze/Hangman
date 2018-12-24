@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/fonts/MajorMonoDisplay-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/DeliusUnicase-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/sounds/ding.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/images/mayoi_spiralgeass.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 64
+size = 72
 use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 3 )
@@ -41,13 +44,13 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
 
-size = 16
+size = 14
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="ui" type="CanvasLayer" index="0"]
+[node name="ui" type="CanvasLayer"]
 
 layer = 0
 offset = Vector2( 0, 0 )
@@ -74,6 +77,10 @@ invert_border = 100.0
 
 [node name="game" parent="." index="1" instance=ExtResource( 2 )]
 
+[node name="word" parent="game" index="0"]
+
+input = ""
+
 [node name="label" type="Label" parent="." index="2"]
 
 pause_mode = 2
@@ -81,9 +88,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 348.0
+margin_left = 331.0
 margin_top = 194.0
-margin_right = 901.0
+margin_right = 914.0
 margin_bottom = 404.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -130,6 +137,7 @@ autostart = false
 
 [node name="play_button" type="Button" parent="." index="6"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -162,10 +170,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 483.0
-margin_top = 515.0
-margin_right = 951.0
-margin_bottom = 532.0
+margin_left = 587.0
+margin_top = 516.0
+margin_right = 954.0
+margin_bottom = 537.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -181,6 +189,43 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
+[node name="start_sound" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="mayoi" type="TextureRect" parent="." index="9"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 296.0
+margin_right = 900.0
+margin_bottom = 1123.0
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 0
+_sections_unfolded = [ "Focus", "Rect", "Visibility" ]
+
+[node name="mayoi_timer" type="Timer" parent="mayoi" index="0"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
 [connection signal="start_over" from="." to="game" method="_on_ui_start_over"]
 
 [connection signal="start_over" from="." to="game" method="_on_game_reset"]
@@ -189,10 +234,17 @@ _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
 [connection signal="win" from="game" to="." method="_on_game_win"]
 
+[connection signal="mayoi" from="game/word" to="." method="_on_word_mayoi"]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]
 
 [connection signal="timeout" from="end_timer" to="." method="_on_end_timer_timeout"]
 
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_down"]
 
+[connection signal="timeout" from="mayoi/mayoi_timer" to="." method="_on_mayoi_timer_timeout"]
 
+
+[editable path="game"]
