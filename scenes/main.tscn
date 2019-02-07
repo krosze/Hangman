@@ -50,7 +50,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="ui" type="CanvasLayer"]
+[node name="ui" type="CanvasLayer" index="0"]
 
 layer = 0
 offset = Vector2( 0, 0 )
@@ -79,7 +79,7 @@ invert_border = 100.0
 
 [node name="word" parent="game" index="0"]
 
-input = ""
+input = "kamimashita"
 
 [node name="label" type="Label" parent="." index="2"]
 
@@ -226,9 +226,9 @@ wait_time = 3.0
 one_shot = true
 autostart = false
 
-[connection signal="start_over" from="." to="game" method="_on_ui_start_over"]
-
 [connection signal="start_over" from="." to="game" method="_on_game_reset"]
+
+[connection signal="start_over" from="." to="game" method="_on_ui_start_over"]
 
 [connection signal="game_over" from="game" to="." method="_on_interactive_game_over"]
 

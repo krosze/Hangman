@@ -1,7 +1,6 @@
 # Hangman
-A small game of hangman made using Godot. Still a work in progress.
-Made in the span of 12 hours for experimental purposes, while learning how to use the game engine.
+A small game of Hangman I made from scratch using the Godot game engine.
 
-May still have bugs.
-Plans to further implement:
-  - play versus the computer / a friend
+To play, you could use the default words I've set it up with or input your own in word.gd located in the scenes folder.
+
+(Image credit goes to SpiralGeass: https://www.deviantart.com/spiralgeass)

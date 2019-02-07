@@ -10,7 +10,7 @@ use_filter = true
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="space" type="Node2D" index="0"]
+[node name="space" type="Node2D"]
 
 [node name="line" type="Line2D" parent="." index="0"]
 
